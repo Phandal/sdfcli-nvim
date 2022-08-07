@@ -4,15 +4,16 @@ local M = {}
 
 function M.create_project(opts)
   M.opts = vim.tbl_deep_extend("force", {}, config.opts, opts or {})
-  if M.opts.sdfInstalled then
-    print('sdfInstalled = true')
-  else
-    if config.checkSDFInstalled() then
-      M.opts.sdfInstalled = true
-    else
-      print('Please make sure that `sdfcli` is your $PATH')
-    end
+  if (not M.opts.sdfInstalled) then
+    print('Please make sure that `sdfcli` is your $PATH')
   end
+
+  local projectPath = '';
+  repeat
+    projectPath = vim.fn.input('Enter the path to the project')
+  until (projectPath ~= "")
+
+  print('\n' .. projectPath)
 end
 
 return M
