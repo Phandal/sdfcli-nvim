@@ -32,6 +32,14 @@ M.remove_trailing_slash = function(path)
   return new_path
 end
 
+M.add_trailing_slash = function(path)
+  local found_slash, _ = path:find(M.path_sep .. '$')
+  if not found_slash then
+    return path .. M.path_sep
+  end
+  return path
+end
+
 M.clear_prompt = function()
   vim.api.nvim_command('normal! :')
 end
