@@ -4,7 +4,7 @@ fmt:
 
 .PHONY: lint
 lint:
-	luacheck ./lua
+	luacheck --no-color -q ./lua
 
 .PHONY: test
 test:
@@ -13,12 +13,12 @@ test:
 .PHONY: pre-commit
 pre-commit:
 	./utils/stylua --config-path stylua.toml --glob 'lua/**/*.lua' -- lua
-	luacheck lua
+	luacheck --no-color -q lua
 	vusted lua
 
 .PHONY: integration
 integration:
 	./utils/stylua --config-path stylua.toml --check --glob 'lua/**/*.lua' -- lua
-	luacheck lua
+	luacheck --no-color -q lua
 	vusted lua
 

@@ -9,11 +9,7 @@ local defaults = {
 }
 
 M.check_sdf_installed = function()
-  if vim.fn.executable('sdfcli') == 1 then
-    return true
-  else
-    return false
-  end
+  return vim.fn.executable('sdfcli') == 1
 end
 
 M.set_project_dir = function()

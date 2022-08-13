@@ -1,13 +1,13 @@
-local config = require('sdfcli-nvim.config')
 local util = require('sdfcli-nvim.utils')
+local config = require('sdfcli-nvim.config')
 
 local M = {}
 
 M.create_project = function()
-  if not config.is_ready() then
+  if config.opts.sdf_installed then
+    util.error_log("Cannot find 'sdfcli' in your $PATH")
     return
   end
-
   local cwd = util.get_cwd()
   util.clear_prompt()
   local input_opts = { prompt = 'Enter path to project: ', default = cwd, completion = 'file' }
