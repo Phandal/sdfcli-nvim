@@ -1,4 +1,5 @@
 local config = require('sdfcli-nvim.config')
+local utils = require('sdfcli-nvim.utils')
 
 local M = {}
 
@@ -18,11 +19,12 @@ local function spawn()
 
   local function print_cmd_output()
     vim.notify(buf, vim.log.levels.INFO)
+    vim.fn.setqflist({}, 'a', {title = 'TEST', lines = vim.split(buf, '\n')}) -- Testing purposes only.
     buf = ''
   end
 
-  handle = vim.loop.spawn('sdfcli', {
-      args = {'deploy', '-authid', config.opts.environment, '-p', config.opts.project_dir},
+  handle = vim.loop.spawn(config.opts.sdfcli_cmd, {
+      args = {'deploy', '-authid', config.opts.environment, '-p', config.opts.project_dir, '-sw'},
       stdio = {stdin, stdout, stderr}
     },
     vim.schedule_wrap(function()
@@ -37,10 +39,10 @@ local function spawn()
     end)
   )
 
-  stdin:write('', function()
-    stdout:read_start(on_read)
-    stderr:read_start(on_read)
-  end)
+  stdout:read_start(on_read)
+  stderr:read_start(on_read)
+  
+  stdin:write('y\n')
 end
 
 M.deploy_project = function()

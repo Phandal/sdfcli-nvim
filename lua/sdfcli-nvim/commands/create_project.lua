@@ -22,7 +22,7 @@ M.create_project = function()
     local project_name = util.get_folder_name(project_path)
 
     util.clear_prompt()
-    print(vim.fn.system('sdfcli createproject -type ACCOUNTCUSTOMIZATION -parentdirectory ' .. project_dir .. ' -projectname ' .. project_name))
+    print(vim.fn.system(config.opts.sdfcli_cmd .. ' createproject -type ACCOUNTCUSTOMIZATION -parentdirectory ' .. project_dir .. ' -projectname ' .. project_name))
   end)
 end
 
