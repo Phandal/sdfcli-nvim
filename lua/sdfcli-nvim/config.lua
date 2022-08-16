@@ -6,10 +6,11 @@ local M = {}
 -- Default options
 local defaults = {
   -- Start here
+  sdfcli_cmd = '/sdfcli/sdfcli.bat',
 }
 
 M.check_sdf_installed = function()
-  return vim.fn.executable('sdfcli') == 1
+  return vim.fn.executable(M.opts.sdfcli_cmd) == 1
 end
 
 M.set_project_dir = function()
@@ -61,7 +62,7 @@ M.set_environment = function()
     if env then
       for _, v in ipairs(sdfcli_opts.environments) do
         if v.name == env then
-          M.opts.environment = v.authid
+          M.opts.environment = '"'..v.authid..'"'
         end
       end
     end

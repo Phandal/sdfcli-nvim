@@ -1,0 +1,13 @@
+{
+  "projectName": "BBWheels",
+  "environments": [
+    {
+      "name": "Production",
+      "authid": "0000000"
+    },
+    {
+      "name": "Sandbox",
+      "authid": "00000000000"
+    }
+  ]
+}
