@@ -1,5 +1,5 @@
 local config = require('sdfcli-nvim.config')
-local utils = require('sdfcli-nvim.utils')
+local util = require('sdfcli-nvim.utils')
 
 local M = {}
 

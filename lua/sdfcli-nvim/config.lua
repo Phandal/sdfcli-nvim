@@ -48,6 +48,9 @@ M.is_ready = function()
 end
 
 M.set_environment = function()
+  if not M.opts.project_dir then
+    M.set_project_dir()
+  end
   local sdfcli_opts = M.get_sdf_config()
   if not sdfcli_opts then
     util.error_log("Cannot read '.sdfcli.json'")
@@ -63,6 +66,7 @@ M.set_environment = function()
       for _, v in ipairs(sdfcli_opts.environments) do
         if v.name == env then
           M.opts.environment = '"'..v.authid..'"'
+          util.info_log('Netsuite Account set to: ' .. v.name)
         end
       end
     end
