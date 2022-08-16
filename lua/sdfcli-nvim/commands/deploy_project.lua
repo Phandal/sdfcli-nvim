@@ -21,8 +21,8 @@ local function spawn()
     buf = ''
   end
 
-  handle = vim.loop.spawn('brew', {
-      args = {'info', 'ripgrep'},
+  handle = vim.loop.spawn('sdfcli', {
+      args = {'deploy', '-authid', config.opts.environment, '-p', config.opts.project_dir},
       stdio = {stdin, stdout, stderr}
     },
     vim.schedule_wrap(function()

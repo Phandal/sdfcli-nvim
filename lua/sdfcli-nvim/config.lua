@@ -85,7 +85,7 @@ end
 function M.setup(opts)
   M.opts = vim.tbl_deep_extend('force', {}, defaults, opts or {})
   -- M.opts.sdf_installed = M.check_sdf_installed()
-  M.opts.sdf_installed = true -- This is used for testing
+  M.opts.sdf_installed = false -- This is used for testing
 end
 
 M.setup()

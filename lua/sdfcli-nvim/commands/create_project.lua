@@ -4,7 +4,7 @@ local config = require('sdfcli-nvim.config')
 local M = {}
 
 M.create_project = function()
-  if config.opts.sdf_installed then
+  if not config.opts.sdf_installed then
     util.error_log("Cannot find 'sdfcli' in your $PATH")
     return
   end
