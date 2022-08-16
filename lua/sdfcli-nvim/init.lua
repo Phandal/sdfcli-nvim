@@ -8,5 +8,6 @@ local M = {}
 M.setup = require('sdfcli-nvim.config').setup()
 M.create_project = require('sdfcli-nvim.commands.create_project').create_project
 M.deploy_project = require('sdfcli-nvim.commands.deploy_project').deploy_project
+M.switch_environments = require('sdfcli-nvim.config').set_environment
 
 return M
