@@ -65,7 +65,7 @@ M.set_environment = function()
     if env then
       for _, v in ipairs(sdfcli_opts.environments) do
         if v.name == env then
-          M.opts.environment = '"'..v.authid..'"'
+          M.opts.environment = '"' .. v.authid .. '"'
           util.info_log('Netsuite Account set to: ' .. v.name)
         end
       end
