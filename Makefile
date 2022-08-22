@@ -8,7 +8,7 @@ lint:
 
 .PHONY: test
 test:
-	vusted --output=gtest ./lua
+	nvim --headless -c "PlenaryBustedDirectory spec/"
 
 .PHONY: pre-commit
 pre-commit:

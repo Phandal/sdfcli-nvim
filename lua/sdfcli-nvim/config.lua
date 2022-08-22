@@ -65,7 +65,7 @@ M.set_environment = function()
     if env then
       for _, v in ipairs(sdfcli_opts.environments) do
         if v.name == env then
-          M.opts.environment = '"'..v.authid..'"'
+          M.opts.environment = '"' .. v.authid .. '"'
           util.info_log('Netsuite Account set to: ' .. v.name)
         end
       end
@@ -89,8 +89,7 @@ end
 -- Setup function to setup the config
 function M.setup(opts)
   M.opts = vim.tbl_deep_extend('force', {}, defaults, opts or {})
-  -- M.opts.sdf_installed = M.check_sdf_installed()
-  M.opts.sdf_installed = true -- This is used for testing
+  M.opts.sdf_installed = M.check_sdf_installed()
 end
 
 M.setup()
