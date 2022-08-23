@@ -13,7 +13,9 @@ M.preview_deployment = function()
   end
 
   utils.clear_prompt()
-  print(vim.fn.system(config.opts.sdfcli_cmd .. ' preview -authid ' .. config.opts.environment .. ' -p ' .. config.opts.project_dir))
+  local lines = vim.fn.systemlist(config.opts.sdfcli_cmd .. ' preview -authid ' .. config.opts.environment .. ' -p ' .. config.opts.project_dir)
+  local opts = { width = math.ceil(vim.o.columns * 0.8), height = math.ceil(vim.o.lines * 0.8) }
+  utils.create_float(lines, opts)
 end
 
 return M

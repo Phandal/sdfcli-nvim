@@ -76,12 +76,13 @@ M.create_float = function(lines, opts)
     relative = 'editor',
     width = width,
     height = height,
-    col = math.ceil((vim.o.columns - width) / 2),
-    row = math.ceil((vim.o.lines - height) / 2),
     anchor = 'NW',
     style = 'minimal',
   }
   options = vim.tbl_deep_extend('force', options, opts)
+  options.col = (math.ceil(vim.o.columns - options.width) / 2)
+  options.row = (math.ceil(vim.o.lines - options.height) / 2)
+
   local win = vim.api.nvim_open_win(buf, 0, options)
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
   vim.api.nvim_buf_set_option(buf, 'filetype', 'sdfinfo')
