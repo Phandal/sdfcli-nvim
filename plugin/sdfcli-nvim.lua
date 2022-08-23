@@ -15,6 +15,10 @@ vim.api.nvim_create_user_command('SDFPreviewDeployment', function()
   require('sdfcli-nvim').preview_deployment()
 end, { desc = 'Preview the deployment' })
 
-vim.api.nvim_create_user_command('SDFSwitchEnvironments', function()
-  require('sdfcli-nvim').switch_environments()
+vim.api.nvim_create_user_command('SDFSetEnvironment', function()
+  require('sdfcli-nvim').set_environment()
 end, { desc = 'Switch between environments in .sdfcli.json' })
+
+vim.api.nvim_create_user_command('SDFInfo', function()
+  require('sdfcli-nvim').info_display()
+end, { desc = 'Show info about currect SDF project' })

@@ -1,5 +1,5 @@
 local config = require('sdfcli-nvim.config')
-local util = require('sdfcli-nvim.utils')
+local utils = require('sdfcli-nvim.utils')
 
 local M = {}
 
@@ -12,7 +12,7 @@ M.preview_deployment = function()
     config.set_environment()
   end
 
-  util.clear_prompt()
+  utils.clear_prompt()
   print(vim.fn.system(config.opts.sdfcli_cmd .. ' preview -authid ' .. config.opts.environment .. ' -p ' .. config.opts.project_dir))
 end
 

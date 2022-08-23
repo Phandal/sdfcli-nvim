@@ -67,4 +67,27 @@ M.error_log = function(msg)
   end)
 end
 
+M.create_float = function(lines, opts)
+  local buf = vim.api.nvim_create_buf(false, true)
+  local width = 60
+  local height = 7
+  vim.api.nvim_buf_set_lines(buf, 0, 1, true, lines)
+  local options = {
+    relative = 'editor',
+    width = width,
+    height = height,
+    col = math.ceil((vim.o.columns - width) / 2),
+    row = math.ceil((vim.o.lines - height) / 2),
+    anchor = 'NW',
+    style = 'minimal',
+  }
+  options = vim.tbl_deep_extend('force', options, opts)
+  local win = vim.api.nvim_open_win(buf, 0, options)
+  vim.api.nvim_buf_set_option(buf, 'modifiable', false)
+  vim.api.nvim_buf_set_option(buf, 'filetype', 'sdfinfo')
+  vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '<CMD>bd<CR>', { silent = true, noremap = true })
+  vim.api.nvim_buf_set_keymap(buf, 'n', '<esc>', '<CMD>bd<CR>', { silent = true, noremap = true })
+  vim.api.nvim_win_set_option(win, 'winblend', 10)
+end
+
 return M
