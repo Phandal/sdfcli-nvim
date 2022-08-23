@@ -1,5 +1,5 @@
 local config = require('sdfcli-nvim.config')
-local utils = require('sdfcli-nvim.utils')
+local ui = require('sdfcli-nvim.ui')
 
 local M = {}
 
@@ -20,7 +20,7 @@ local function spawn()
   local function print_cmd_output()
     --vim.notify(buf, vim.log.levels.INFO)
     vim.fn.setqflist({}, 'r', { title = 'TEST', lines = vim.split(buf, '\n') }) -- Testing purposes only.
-    utils.create_float(vim.split(buf, '\n'), { width = math.ceil(vim.o.columns * 0.8), height = math.ceil(vim.o.lines * 0.8)})
+    ui.create_float(vim.split(buf, '\n'), {})
     buf = ''
   end
 

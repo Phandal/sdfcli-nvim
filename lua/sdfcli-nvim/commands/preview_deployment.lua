@@ -1,5 +1,6 @@
 local config = require('sdfcli-nvim.config')
 local utils = require('sdfcli-nvim.utils')
+local ui = require('sdfcli-nvim.ui')
 
 local M = {}
 
@@ -14,8 +15,7 @@ M.preview_deployment = function()
 
   utils.clear_prompt()
   local lines = vim.fn.systemlist(config.opts.sdfcli_cmd .. ' preview -authid ' .. config.opts.environment .. ' -p ' .. config.opts.project_dir)
-  local opts = { width = math.ceil(vim.o.columns * 0.8), height = math.ceil(vim.o.lines * 0.8) }
-  utils.create_float(lines, opts)
+  ui.create_float(lines, {})
 end
 
 return M
