@@ -1,6 +1,8 @@
-# sdfcli.nvim
+# sdfcli=nvim
 
 A wrapper for the [sdfcli](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_1489072409.html) java tool.
+
+Based on [christopherwxyz's](https://marketplace.visualstudio.com/publishers/christopherwxyz) [NetSuiteSDF VSCode Extension](https://marketplace.visualstudio.com/items?itemName=christopherwxyz.netsuitesdf)
 
 ## Concept
 1. Fully support the sdfcli tool
@@ -21,7 +23,7 @@ To install you can use your favorite package manager.
 **Packer**
 ```lua
 return require('packer').startup(function(use)
-  use 'Phandal/sfdcli.nvim'
+  use 'Phandal/sfdcli-nvim'
 end)
 ```
 
