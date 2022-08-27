@@ -1,5 +1,6 @@
 local config = require('sdfcli-nvim.config')
 local ui = require('sdfcli-nvim.ui')
+local utils = require('sdfcli-nvim.utils')
 
 local M = {}
 
@@ -8,6 +9,7 @@ local function spawn()
   local stdout = vim.loop.new_pipe(false)
   local stderr = vim.loop.new_pipe(false)
   local handle
+  local pid
   local buf = ''
 
   local function on_read(err, data)
@@ -24,7 +26,7 @@ local function spawn()
     buf = ''
   end
 
-  handle = vim.loop.spawn(
+  handle, pid = vim.loop.spawn(
     config.opts.sdfcli_cmd,
     {
       args = { 'deploy', '-authid', config.opts.environment, '-p', config.opts.project_dir, '-sw' },
@@ -41,6 +43,10 @@ local function spawn()
       print_cmd_output()
     end)
   )
+  if not handle then
+    utils.error_log(('Error creating process: ' .. pid))
+    return
+  end
 
   stdout:read_start(on_read)
   stderr:read_start(on_read)
