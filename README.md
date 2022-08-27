@@ -1,4 +1,4 @@
-# sdfcli=nvim
+# sdfcli-nvim
 
 A wrapper for the [sdfcli](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_1489072409.html) java tool.
 
