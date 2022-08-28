@@ -8,7 +8,7 @@ lint:
 
 .PHONY: test
 test:
-	nvim --headless -c "PlenaryBustedDirectory spec/"
+	nvim --headless -c "PlenaryBustedDirectory tests/"
 
 .PHONY: pre-commit
 pre-commit:
