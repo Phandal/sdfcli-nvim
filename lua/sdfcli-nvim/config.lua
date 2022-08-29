@@ -33,15 +33,6 @@ M.find_project_dir = function(path)
 end
 
 local _set_environment = function(choice)
-  if (choice) then
-    for _, v in pairs(sdfcli_opts.environments) do
-      if v.name == choice then
-        M.opts.environment_name = v.name
-        M.opts.environment_value = v.authid
-        return
-      end
-    end
-  end
 end
 
 M.set_environment = function()
@@ -51,13 +42,26 @@ M.set_environment = function()
 
   local sdfcli_opts = read_sdf_config(json_path)
   assert(sdfcli_opts.environments, 'Could not find environments property in .sdfcli.json')
+
   local envs = {}
   for i, v in pairs(sdfcli_opts.environments) do
     envs[i] = v.name
   end
 
+  local environment_set = false
   local select_opts = { prompt = 'Please choose an environment:' }
-  vim.ui.select(envs, select_opts, function(choice) _set_environment(choice) end)
+  vim.ui.select(envs, select_opts, function(choice)
+    if (choice) then
+      for _, v in pairs(sdfcli_opts.environments) do
+        if v.name == choice then
+          M.opts.environment_name = v.name
+          M.opts.environment_value = v.authid
+          environment_set = true
+        end
+      end
+    end
+  end)
+  return environment_set
 end
 
 M.setup = function(opts)

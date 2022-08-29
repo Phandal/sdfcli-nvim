@@ -37,10 +37,10 @@ describe('The set_environment function', function()
   end)
 
   it('updates the environment related settings', function()
-    _G.vim.ui.select = function() return 'Production' end
+    vim.ui.select = function() return 'Production' end
     local env = 'test'
     config.opts.environment_name = env
-    config.set_environment()
+    assert.is_true(config.set_environment())
     assert.is_not.equals(env, config.opts.environment_name)
   end)
 end)
