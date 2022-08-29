@@ -1,7 +1,5 @@
-local Hello_World = function()
-  print("Hello World")
-end
+local config = require('sdfcli-nvim.config')
 
 return {
-  hello = Hello_World,
+  setup = config.setup,
 }
