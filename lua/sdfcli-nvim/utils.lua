@@ -84,9 +84,8 @@ M.create_float = function(lines, opts)
   options = vim.tbl_deep_extend('force', options, opts)
   local win = vim.api.nvim_open_win(buf, 0, options)
   vim.api.nvim_buf_set_option(buf, 'modifiable', false)
-  vim.api.nvim_buf_set_option(buf, 'filetype', 'sdfinfo')
-  vim.api.nvim_buf_set_keymap(buf, 'n', 'q', '<CMD>bd<CR>', { silent = true, noremap = true })
-  vim.api.nvim_buf_set_keymap(buf, 'n', '<esc>', '<CMD>bd<CR>', { silent = true, noremap = true })
+  vim.api.nvim_buf_set_option(buf, 'filetype', 'sdfcli')
+  vim.api.nvim_buf_set_option(buf, 'buftype', 'nofile')
   vim.api.nvim_win_set_option(win, 'winblend', 10)
 end
 

@@ -3,6 +3,9 @@ if vim.g.loaded_sdfcli_nvim then
 end
 vim.g.loaded_sdfcli_nvim = true
 
+vim.api.nvim_create_autocmd('FileType', { pattern = 'sdfcli', command = "nnoremap q <CMD>bd!<CR>" })
+vim.api.nvim_create_autocmd('FileType', { pattern = 'sdfcli', command = "nnoremap <esc> <CMD>bd!<CR>" })
+
 vim.api.nvim_create_user_command('SDFCreateProject', function()
   require('sdfcli-nvim').create_project()
 end, { desc = 'Create an SDF project' })
