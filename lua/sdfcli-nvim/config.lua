@@ -32,9 +32,6 @@ M.find_project_dir = function(path)
   return nil
 end
 
-local _set_environment = function(choice)
-end
-
 M.set_environment = function()
   assert(M.opts.project_dir, 'Project directory not set')
   local json_path = M.opts.project_dir .. utils.path_sep .. '.sdfcli.json'
@@ -51,7 +48,7 @@ M.set_environment = function()
   local environment_set = false
   local select_opts = { prompt = 'Please choose an environment:' }
   vim.ui.select(envs, select_opts, function(choice)
-    if (choice) then
+    if choice then
       for _, v in pairs(sdfcli_opts.environments) do
         if v.name == choice then
           M.opts.environment_name = v.name

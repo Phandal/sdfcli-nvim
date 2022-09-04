@@ -1,3 +1,6 @@
+.PHONY: all
+all: fmt lint test
+
 .PHONY: fmt
 fmt:
 	stylua --config-path stylua.toml --glob 'lua/**/*.lua' -- lua
