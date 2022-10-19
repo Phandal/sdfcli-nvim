@@ -17,4 +17,8 @@ M.file_exists = function(path)
   return err == nil
 end
 
+M.create_win = function(width, height)
+  --return 0, 0
+end
+
 return M
