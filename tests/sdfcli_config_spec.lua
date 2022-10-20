@@ -45,3 +45,19 @@ describe('The set_environment function', function()
     assert.equal('Production', config.opts.environment_name)
   end)
 end)
+
+describe('The show_info function', function()
+
+  it('should create a new window', function()
+    spy.on(utils, 'create_win')
+    config.show_info()
+    assert.spy(utils.create_win).was_called()
+  end)
+
+  it('should write to the window', function()
+    spy.on(utils, 'write_to_win')
+    config.show_info()
+    assert.spy(utils.write_to_win).was_called()
+  end)
+
+end)

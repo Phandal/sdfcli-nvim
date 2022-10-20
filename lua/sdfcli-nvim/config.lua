@@ -61,6 +61,27 @@ M.set_environment = function()
   return environment_set
 end
 
+M.show_info = function()
+  local env = M.opts.environment_name or 'Environment not set!'
+
+  local lines = {
+    '',
+    ' Is `sdfcli` executable: ',
+    '   ' .. tostring(M.opts.has_command),
+    '',
+    ' Path to `sdfcli` command: ',
+    '   ' .. M.opts.sdfcli_cmd_path,
+    '',
+    ' Project Directory: ',
+    '   ' .. M.opts.project_dir,
+    '',
+    ' Environment: ',
+    '   ' .. env,
+  }
+  local _, bufnr = utils.create_win()
+  utils.write_to_win(bufnr, lines)
+end
+
 M.setup = function(opts)
   M.opts = vim.tbl_deep_extend('force', {}, M.defaults, opts)
   M.opts.has_command = M.is_command_executable(M.opts.sdfcli_cmd_path)
