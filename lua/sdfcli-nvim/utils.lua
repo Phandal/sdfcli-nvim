@@ -51,7 +51,7 @@ end
 
 M.write_to_win = function(bufnr, lines)
   vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
-  vim.api.nvim_buf_set_lines(bufnr, -1, -1, false, lines)
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, true, lines)
   vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
 end
 
