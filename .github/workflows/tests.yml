@@ -1,0 +1,22 @@
+name: Run Tests
+on: [push, pull_request]
+
+jobs:
+  run-tests:
+    name: Run tests
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        neovim_branch: ["v0.8.0", "nightly"]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup neovim
+        uses: rhysd/action-setup-vim@v1
+        with:
+          neovim: true
+          version: ${{ matrix.neovim_branch }}
+      
