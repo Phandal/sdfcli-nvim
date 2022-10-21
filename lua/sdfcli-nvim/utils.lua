@@ -43,6 +43,7 @@ M.create_win = function()
   -- Set buffer options
   vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
   vim.api.nvim_buf_set_option(bufnr, 'filetype', 'sdfcli-nvim')
+  vim.api.nvim_buf_set_option(bufnr, 'buftype', 'nofile')
   vim.api.nvim_buf_set_keymap(bufnr, 'n', 'q', '<CMD>quit<CR>', { silent = true, noremap = true })
   vim.api.nvim_buf_set_keymap(bufnr, 'n', '<ESC>', '<CMD>quit<CR>', { silent = true, noremap = true })
 
