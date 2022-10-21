@@ -36,7 +36,7 @@ jobs:
 
       - name: Install stylua
         run: |
-          curl -sL https://github.com/JohnnyMorganz/StyLua/releases/download/v0.15.1/stylua-linux-x86_64.zip > ./stylua.zip | unzip ./stylua.zip -d ./utils
+          curl -sL https://github.com/JohnnyMorganz/StyLua/releases/download/v0.15.1/stylua-linux-x86_64.zip > stylua.zip | unzip ./stylua.zip -d ./utils
 
       - name: Run Tests
         run: |
