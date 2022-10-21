@@ -15,7 +15,7 @@ test:
 
 .PHONY: integration
 integration:
-	./stylua --config-path stylua.toml --check --glob 'lua/**/*.lua' -- lua
+	./utils/stylua --config-path stylua.toml --check --glob 'lua/**/*.lua' -- lua
 	luacheck --no-color -q lua
 	vusted tests/
 
