@@ -18,13 +18,13 @@ test:
 
 .PHONY: pre-commit
 pre-commit:
-	./utils/stylua --config-path stylua.toml --glob 'lua/**/*.lua' -- lua
+	stylua --config-path stylua.toml --glob 'lua/**/*.lua' -- lua
 	luacheck --no-color -q lua
-	vusted lua
+	vusted tests/
 
 .PHONY: integration
 integration:
-	./utils/stylua --config-path stylua.toml --check --glob 'lua/**/*.lua' -- lua
+	stylua --config-path stylua.toml --check --glob 'lua/**/*.lua' -- lua
 	luacheck --no-color -q lua
-	vusted lua
+	vusted tests/
 

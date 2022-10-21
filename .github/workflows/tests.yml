@@ -19,3 +19,7 @@ jobs:
         with:
           neovim: true
           version: ${{ matrix.neovim_branch }}
+
+      - name: Get PWD
+        run:
+          pwd
