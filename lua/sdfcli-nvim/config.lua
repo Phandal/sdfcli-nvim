@@ -62,8 +62,6 @@ M.set_environment = function()
 end
 
 M.show_info = function()
-  local env = M.opts.environment_name or 'Environment not set!'
-
   local lines = {
     '',
     ' Is `sdfcli` executable: ',
@@ -73,10 +71,10 @@ M.show_info = function()
     '   ' .. M.opts.sdfcli_cmd_path,
     '',
     ' Project Directory: ',
-    '   ' .. M.opts.project_dir,
+    '   ' .. (M.opts.project_dir or 'Project Directory not set!'),
     '',
     ' Environment: ',
-    '   ' .. env,
+    '   ' .. (M.opts.environment_name or 'Environment not set!'),
   }
   local _, bufnr = utils.create_win()
   utils.write_to_win(bufnr, lines)
