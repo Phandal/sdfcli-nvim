@@ -1,3 +1,7 @@
+# **ARCHIVE NOTICE**
+
+Oracle released a [suitecloud](https://www.npmjs.com/package/@oracle/suitecloud-cli) npm package. This is now used instead of the java program they had before. Please take a look at [suitecloud.nvim](https://github.com/Phandal/suitecloud.nvim).
+
 # sdfcli-nvim
 
 A wrapper for the [sdfcli](https://docs.oracle.com/en/cloud/saas/netsuite/ns-online-help/section_1489072409.html) java tool.
